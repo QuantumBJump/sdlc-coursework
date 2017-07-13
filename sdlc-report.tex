@@ -1,0 +1,82 @@
+\documentclass{report}
+
+\author{Quinn Stevens}
+\title{SDLC Report}
+\date{11/7/17}
+
+\begin{document}
+\maketitle
+\section*{Executive Summary}
+The following is a report detailing my SDLC coursework project, which I worked on with Shannon Sullivan, Ricard Sol\'e Casas \& Nikhil Kerai. We used the lean startup methodology to design and implement the prototype of a product.
+\tableofcontents
+
+\section{Introduction}
+The goal of this project was to use the lean startup methodology, agile and other SDLC concepts covered over the course of the launchpad to design and build a prototype of a potential tool or service we thought would be useful.
+
+We decided to make a Slack bot called \emph{meetbot}, which would allow users to easily organise ad-hoc meetups such as for lunch, trips to a museum, or drinks after work.
+
+\section{Analysis}
+The problem we decided to solve, specifically, was that organising out-of-work activities with colleagues is hard, especially within large or spread-out teams. We thought that making a slackbot to facilitate planning such meetings would be incredibly helpful to our target demographic, whom we defined as "Professionals who would like to organise events outside of work from the comfort of their Slack team".
+
+We made several assumptions in our initial analysis of the problem. These were the most important of them:
+
+\begin{itemize}
+	\item Our slackbot complies with slack's terms of service
+	\item People want to socialise outside of work
+	\item People use Slack to co-ordinate
+	\item People want to see what others are doing and/or be seen
+	\item People are familiar with slackbots
+	\item People will read detailed help messages
+\end{itemize}
+
+We tested these assumptions in various different ways - mainly through a questionnaire and online research - and found the following:\\
+
+\textbf{Our slackbot complies with slack's terms of service}\\
+This was the easiest assumption to test - we simply read the Terms \& Conditions of slack. It turned out that what we were doing was indeed sanctioned by the terms, although it looked like it may prove prudent to migrate to a different platform if meetbot started to become popular, as slack reserves the right to rescind API access at any time.
+
+\textbf{People want to socialise outside of work/People want to see what others are doing}\\
+We tested these assumptions by sending out a form through typeform. We distributed this form using viral media techniques, sending it to our friends and asking them to pass it on. In the day or so the form was live, we managed to get almost 70 responses.
+
+These overwhelmingly supported both of our assumptions. In fact, we were quite surprised that people were so ok with others knowing where they were going.
+
+\textbf{People use Slack to co-ordinate}\\
+In order to test this assumption, we looked at public usage statistics for Slack and two of its closest competitors, Discord and HipChat. It turned out that Slack has much higher usage numbers than Discord, and HipChat don't publish their users at all, which implies that their stats aren't much to look at.
+
+\textbf{People are familiar with slackbots}\\
+We also tested this assumption in our typeform questionnaire, and our results said that most people were indeed familiar with slackbots. However, in later testing it became apparent that although people thought they knew about slackbots, they were not in fact familiar with their usage, so we needed to pivot in order to focus a little more on onboarding.
+
+\textbf{People will read detailed help messages}\\
+We actually didn't test this assumption at all, it was something that became apparent later in the project as we tested and found that people very rarely read the help message that was displayed whenever they tried to type an invalid command. We used this revelation to make plans to make our help message easier to read and parse.
+
+\section{Design}
+At the beginning of our design process, we first set out to define the group of people we would be aiming to have as our users. After some discussion we agreed that that group would be "Professionals who would like to organise events outside of work from the comfort of their Slack team". We then set out to define all the assumptions we had made about this group of users, and to test those assumptions to see if we were correct.
+
+After that we looked at the journeys different user archetypes would take as they used our tool - for instance, the person installing our bot, slack team admins, and just general users on the team. We then broke these down into user stories, and then further into issues we wanted to address.
+
+\section{Implementation}
+We used the Kanban methodology to organise our work, as we decided that with such a short timeframe in which to implement the project, Scrum would be too unwieldy with its sprints \& standups. Kanban was a lot more flexible, and allowed us to focus our attention on a small number of tasks at a time. We broke down our user stories into features to implement and divided them between ourselves.
+
+We programmed the bot itself in python, using slack's messaging API and a bot user which we were able to create using their online tools. Python was chosen because it is a very easy language to get something working quickly in, so it is ideal for prototyping. If we were to go on to make a fully fledged product, we might use a different language, but for our purposes Python was perfect. We also used Github for version control and Waffle.io for project management, and we deployed the bot itself as an app on Heroku.
+
+At first, we delegated tasks between all four of us, with one of us working on each issue. However it quickly became clear that we worked much better when collaborating, so we decided that the programming part of the project should be done in a group. We spent most of the time during the project with myself, Shannon and Ricard programming as a group, using mob programming techniques, and Nik working on designing our landing page, as he had some experience with creating websites and not much with programming, especially not in Python.
+
+Later on, we switched to working in pairs, with myself and Shannon working on the programming, and Ricard and Nik doing user testing.
+
+\section{Testing}
+Before we even started implementing the slackbot, we decided it would be useful to know how people would try to use the bot, so we set up a prototype trial. We wrote a script with sample commands and responses, and then Ricard changed his Slack username and profile picture and pretended to be the slackbot. We then went round various people and asked them to try and use the slackbot. This was very useful as it let us know that people as a whole aren't very familiar with how chat bots work. This helped us to reassess some of our assumptions, such as that our users would be 'technically savvy' - we had to redefine what we meant by 'technically savvy' as we hadn't anticipated people having trouble using the bot.
+
+Later, when we had managed to make a working prototype, Ricard and Nik added the bot to our own slack team and went round various people in the college asking them to try and use the bot. They asked several questions to try and see how users would react to being asked to do certain tasks, and recorded the training sessions so we could use them as data to inform our direction going forward.
+
+From the testing we learnt that it was important to keep interaction with the bot as natural-feeling as possible, both by allowing the use of natural-language-like commands ("@meetbot, I'd like to go to Styx for drinks after work" instead of "@meetbot create drinks at Styx after work"), and by making the bot follow a more human-like thought process. There were several features which hadn't occurred to us, but which many of our test users assumed would be possible, for instance the ability to see information about just one event, or only the events they were going to.
+
+We also discovered the importance of testing \emph{while} building, instead of building something and then testing it. It took us much longer than it should have to learn that our help function was unintuitive - when we tested, many people didn't read it at all, and therefore had no idea of the commands available to them, and for others the wording was ambiguous so they assumed there were commands that weren't listed in the help function, where that was not the case.
+
+\section{Evaluation}
+Overall, this project has been incredibly interesting, and we learnt many things that will hopefully allow us to make better products in the future. We learnt a lot about the value of collaboration and communication between team members, the importance of giving and receiving feedback, and the power of constant iteration and flexible direction in building software.
+
+Among the things we would like to have done if we had more time were adding more functionality to the actual events, such as the ability to keep track of what time they are happening and who organised them. This would allow things like sending reminders to people before the event, or allowing event organisers to edit or delete events.
+
+It would also be incredibly important to implement some sort of one-click install feature or an installation wizard, because currently the process of installing the slackbot requires technical knowledge that not everyone will have.
+
+I now have a much greater understanding of the advantages of the agile approach to software development, as before I had experience working with it, when it was just theory, it seemed to be a lot of effort for not much gain. Now however I see how helpful it is to keeping a project going; and more importantly, keeping it heading in the right direction.
+\end{document}
